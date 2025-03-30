@@ -19,5 +19,9 @@ export default{
   border-radius: 8px;
   font-family: 'Roboto', sans-serif;
   height: 25px;
+  transition-duration: 0.5s;
+}
+.btn:hover{
+  background-color: #303030;
 }
 </style>

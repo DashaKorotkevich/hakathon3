@@ -57,19 +57,17 @@
                 src="../../public/icons/projects.svg" alt="">
                 <p>Мои проекты</p>
               </div>
-              <button id="add-button" class="add-button">
-                <img src="../../public/icons/plus.svg" alt="add project">
-              </button>
           </nav-link>
           <!--проекты выводятся динамически, но пока статика-->
           <div class="chapter-list">
             <div class="chapter-list-cont">
                 <my-button-type1 
                 class="chapter-list-item"
-                @click="$router.push('/MyProject')">ПРОЕКТ 1
+                @click="handleClick1">ПРОЕКТ 1
                 </my-button-type1>
                 <my-button-type1 
-                class="chapter-list-item">ПРОЕКТ 2
+                class="chapter-list-item"
+                @click="handleClick2">ПРОЕКТ 2
                 </my-button-type1>
             </div>
           </div>
@@ -90,13 +88,28 @@
 </template>
 
 <script>
-import AccountUser from '@/components/AccountUser.vue';
+import AccountUser  from '@/components/AccountUser.vue';
 import NavLink from '@/components/UI/NavLink.vue';
+import EventBus from './eventBus.js'; // Исправленный импорт
+
 export default {
   components: {
-    AccountUser, 
+    AccountUser , 
     NavLink
-  }
+  },
+  methods: {
+    handleClick1() {
+      this.sendData(0); // Ваш метод для отправки ID
+      this.$router.push('/MyProject'); // Переход на другой маршрут
+    },
+    handleClick2() {
+      this.sendData(1); // Ваш метод для отправки ID
+      this.$router.push('/MyProject'); // Переход на другой маршрут
+    },
+    sendData(id) {
+      EventBus.$emit('buttonClicked', id); // Здесь все правильно
+    },
+  },
 }
 </script>
 

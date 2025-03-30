@@ -7,7 +7,7 @@
 export default{
   name: 'my-input',
   props:{
-    modelValue: [String, Number]
+    modelValue: String
   },
   methods:{
     updateInput(event){
@@ -19,9 +19,13 @@ export default{
 
 <style scoped>
 .input{
-  width: 100%;
+  height: 30px;
+  width: 414px;
   border: 2px solid  teal;
   padding: 10px 15px;
   margin-top: 10px;
+  margin-right: 20px;
+  border-radius: 5px;
+  background-color: transparent;
 }
 </style>
